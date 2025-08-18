@@ -1,0 +1,19 @@
+version: 1.2.8
+cache: true
+
+endpoints:
+  custom:
+    - name: "LocalOpenAI"
+      apiKey: "${OPENAI_API_KEY}"
+      baseURL: "https://api.openai.com/v1"
+      models:
+        default: ["gpt-4o-mini"]
+        fetch: true
+      titleConvo: true        # কনভারসেশনের টাইটেল অটো জেনারেট হবে
+      summarize: true         # বড় কনভারসেশন সারসংক্ষেপে কনভার্ট হবে
+      forcePrompt: true       # সবসময় প্রম্পট ইনজেক্ট করবে
+      addParams:              # মডেল কন্ট্রোলের জন্য এক্সট্রা প্যারাম
+        temperature: 0.7
+        max_tokens: 1500
+      headers:                # এক্সট্রা হেডার
+        X-Custom-Header: "MyLocalLibreChat"
